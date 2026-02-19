@@ -1,0 +1,42 @@
+class_name PlayerPunchState
+extends PlayerState
+
+var has_attacked: bool
+@onready var hitbox: HitBox = $HitBox
+
+func enter() -> void:
+	has_attacked = false
+	
+	if hitbox:
+		hitbox.scale.x = -1 if sprite_flipped else 1
+		# USE THIS: Safely turn ON monitoring on the next physics frame
+		hitbox.set_deferred("monitorable", true) 
+	
+	player.animation.play(punch_anim)
+	
+	if not player.animation.animation_finished.is_connected(_on_animation_finished):
+		player.animation.animation_finished.connect(_on_animation_finished, CONNECT_ONE_SHOT)
+
+func _on_animation_finished() -> void:
+	has_attacked = true
+
+func exit(new_state: State = null) -> void:
+	super(new_state)
+	if hitbox:
+		# USE THIS: Safely turn OFF monitoring
+		hitbox.set_deferred("monitorable", false)
+
+func process_input(event: InputEvent) -> State:
+	super(event)
+	if has_attacked:
+		if event.is_action_pressed(movement_key):
+			determine_sprite_flipped(event.as_text())
+			return walk_state
+		elif event.is_action_pressed(jump_key): 
+			return jump_state
+	return null
+
+func process_frame(delta: float) -> State:
+	super(delta)
+	if has_attacked: return idle_state
+	return null

@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1aoqtwlwpa8f"]
+
+[ext_resource type="Script" uid="uid://b4lddnc5yjuum" path="res://health_bar.gd" id="1_37p78"]
+
+[sub_resource type="GDScript" id="GDScript_0b4ue"]
+script/source = "extends CanvasLayer
+
+@onready var player_bar: ProgressBar = $HealthBars/PlayerHealthBar
+@onready var enemy_bar: ProgressBar = $HealthBars/EnemyHealthBar
+
+# Variables to hold the actual health nodes
+var player_health: Health
+var enemy_health: Health
+
+func _ready() -> void:
+	var player = get_tree().get_first_node_in_group(\"player\")
+	if player and player.has_node(\"Health\"):
+		player_health = player.get_node(\"Health\")
+		setup_bar(player_bar, player_health)
+
+	var enemy = get_tree().get_first_node_in_group(\"enemy\")
+	if enemy and enemy.has_node(\"Health\"):
+		enemy_health = enemy.get_node(\"Health\")
+		setup_bar(enemy_bar, enemy_health)
+
+func setup_bar(bar: ProgressBar, health_node: Health) -> void:
+	bar.max_value = health_node.max_health
+	bar.value = health_node.health
+	# Connect the signal directly to the bar's value property
+	health_node.health_changed.connect(func(diff): update_bar(bar, health_node))
+
+func update_bar(bar: ProgressBar, health_node: Health) -> void:
+	bar.value = health_node.health
+"
+
+[node name="HUD" type="CanvasLayer"]
+script = SubResource("GDScript_0b4ue")
+
+[node name="HealthBars" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="HealthBars"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 420.0
+offset_bottom = 50.0
+script = ExtResource("1_37p78")
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="HealthBars"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 50.0
+grow_horizontal = 0
+fill_mode = 1
+script = ExtResource("1_37p78")
