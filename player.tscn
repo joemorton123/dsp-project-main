@@ -39,7 +39,7 @@
 [ext_resource type="Script" uid="uid://dgkpww42y58s4" path="res://player/Scripts/hit_box.gd" id="36_331ug"]
 [ext_resource type="Script" uid="uid://cbyapaqsrx11r" path="res://player/Scripts/pain.gd" id="36_b88wv"]
 [ext_resource type="Script" uid="uid://ccxtrp3pme87b" path="res://player/Scripts/hurt_box.gd" id="36_khis8"]
-[ext_resource type="Script" uid="uid://b5rgu2hdoy76h" path="res://health.gd" id="40_ny14h"]
+[ext_resource type="Script" uid="uid://b5rgu2hdoy76h" path="res://player/Scripts/health.gd" id="40_ny14h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hl5qd"]
 atlas = ExtResource("9_jm5j8")
@@ -526,23 +526,22 @@ _data = {
 size = Vector2(34.5, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_331ug"]
-size = Vector2(27.5, 13.5)
+size = Vector2(28.75, 13.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny14h"]
-size = Vector2(22, 46)
+size = Vector2(24, 47)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(1, -2)
 script = ExtResource("1_op7ga")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(5, -2.9999998)
 scale = Vector2(1, 1.0079365)
 sprite_frames = SubResource("SpriteFrames_op7ga")
 animation = &"walk"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(2, 5)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_iruf7")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
@@ -596,7 +595,7 @@ monitoring = false
 script = ExtResource("36_331ug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/punch/HitBox"]
-position = Vector2(20.25, -5)
+position = Vector2(20, -3)
 shape = SubResource("RectangleShape2D_ibah8")
 debug_color = Color(0.739062, 0.2214694, 0.99999994, 0.41960785)
 
@@ -612,9 +611,10 @@ collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("36_331ug")
+damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/kick/HitBox"]
-position = Vector2(18.25, 5)
+position = Vector2(18.625, 9)
 shape = SubResource("RectangleShape2D_331ug")
 debug_color = Color(0.40753078, 0.60742974, 1.92523e-07, 0.41960785)
 
@@ -636,7 +636,7 @@ health = NodePath("../../../Health")
 metadata/_custom_type_script = "uid://ccxtrp3pme87b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/pain/HurtBox"]
-position = Vector2(-2, 6)
+position = Vector2(-1, 8.5)
 shape = SubResource("RectangleShape2D_ny14h")
 debug_color = Color(0.82124746, 0, 0.047960058, 0.41960785)
 

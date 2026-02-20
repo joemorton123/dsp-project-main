@@ -608,25 +608,22 @@ position = Vector2(-2, 0)
 zoom = Vector2(3, 3)
 
 [node name="Player" parent="." instance=ExtResource("2_vonw3")]
-position = Vector2(-1.4768677, -3.8140335)
-
-[node name="Sprite" parent="Player" index="0"]
-position = Vector2(-149.52313, 0.81403375)
+position = Vector2(-157, 27)
 
 [node name="Collision" parent="Player" index="1"]
-position = Vector2(-149.52313, 6.8140335)
+position = Vector2(0.47686768, 8.8140335)
 
 [node name="CollisionShape2D" parent="Player/StateMachine/punch/HitBox" index="0"]
-position = Vector2(-130.52313, -1.1859665)
+position = Vector2(21.476868, -5.1859665)
 
 [node name="CollisionShape2D" parent="Player/StateMachine/kick/HitBox" index="0"]
-position = Vector2(-137.52313, 6.8140335)
+position = Vector2(17.476868, 4.8140335)
 
 [node name="CollisionShape2D" parent="Player/StateMachine/pain/HurtBox" index="0"]
-position = Vector2(-149.52313, 7.8140335)
+position = Vector2(0.47686768, 6.8140335)
 
 [node name="PunchingBag" parent="." instance=ExtResource("3_oi3di")]
-position = Vector2(83, 2)
+position = Vector2(83, 19)
 
 [node name="HUD" parent="." instance=ExtResource("5_f2txt")]
 

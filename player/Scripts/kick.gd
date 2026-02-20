@@ -3,13 +3,21 @@ extends PlayerState
 
 var has_attacked: bool
 @onready var hitbox: HitBox = $HitBox
+@onready var collision_shape: CollisionShape2D = $HitBox/CollisionShape2D
+
+func _ready() -> void:
+	if hitbox:
+		hitbox.monitorable = false
 
 func enter() -> void:
 	has_attacked = false
 	
-	if hitbox:
-		hitbox.scale.x = -1 if sprite_flipped else 1
-		# SAFELY turn ON
+	if hitbox and collision_shape:
+		if sprite_flipped:
+			collision_shape.position.x = -16.25
+		else:
+			collision_shape.position.x = 18.25
+			
 		hitbox.set_deferred("monitorable", true)
 		
 	player.animation.play(kick_anim)
@@ -23,7 +31,6 @@ func _on_animation_finished() -> void:
 func exit(new_state: State = null) -> void:
 	super(new_state)
 	if hitbox:
-		# SAFELY turn OFF
 		hitbox.set_deferred("monitorable", false)
 
 func process_input(event: InputEvent) -> State:
