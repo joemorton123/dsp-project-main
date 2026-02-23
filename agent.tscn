@@ -535,6 +535,7 @@ size = Vector2(24, 47)
 position = Vector2(1, -2)
 script = ExtResource("1_0kamt")
 is_agent = true
+player_id = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 1.0079365)

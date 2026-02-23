@@ -2,7 +2,7 @@ class_name PlayerPainState
 extends PlayerState
 
 const KNOCKBACK_SPEED: float = 400.0
-const FRICTION: float = 1500.0
+const FRICTION: float = 1000.0
 
 var stun_timer: float = 0.0
 var has_hit_wall: bool = false

@@ -6,7 +6,7 @@ var has_attacked: bool
 
 @onready var collision_shape: CollisionShape2D = $HitBox/CollisionShape2D
 
-@export var recovery_time: float = 0.25 
+@export var recovery_time: float = 0.2
 
 func _ready() -> void:
 	if hitbox:
