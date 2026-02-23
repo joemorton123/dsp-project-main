@@ -20,10 +20,13 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	super(delta)
-	do_move(get_move_dir())
-	return super(delta)
-	
-func get_move_dir() -> float: return Input.get_axis(left_key, right_key)
+	var direction = get_move_dir()
+	player.velocity.x = direction * AIR_SPEED 
+
+	var new_state = super(delta)
+	if new_state:
+		return new_state
+
+	return null
 	
 func do_move(move_dir: float) -> void: player.velocity.x = move_dir * AIR_SPEED

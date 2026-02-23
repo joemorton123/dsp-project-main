@@ -32,4 +32,6 @@ func _physics_process(delta):
 	state_machine.process_physics(delta)
 
 func _input(event): 
+	if is_agent:
+		return
 	state_machine.process_input(event)

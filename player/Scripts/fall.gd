@@ -18,18 +18,16 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	super(delta)
-	do_move(get_move_dir())
-	if player.is_on_floor():
-		if get_move_dir() != 0.0: return walk_state
-		else: return idle_state
+
+	var direction = get_move_dir()
+	player.velocity.x = direction * AIR_SPEED
 	
-	player.velocity.y += gravity * delta
-	player.move_and_slide()
+	super(delta)
+	
+	if player.is_on_floor():
+		if direction != 0.0: 
+			return walk_state
+		else: 
+			return idle_state
+			
 	return null
-
-func get_move_dir() -> float: 
-	return Input.get_axis(left_key, right_key)
-
-func do_move(move_dir: float) -> void: 
-	player.velocity.x = move_dir * AIR_SPEED

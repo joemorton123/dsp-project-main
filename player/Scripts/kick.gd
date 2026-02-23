@@ -5,6 +5,8 @@ var has_attacked: bool
 @onready var hitbox: HitBox = $HitBox
 @onready var collision_shape: CollisionShape2D = $HitBox/CollisionShape2D
 
+@export var recovery_time: float = 0.4
+
 func _ready() -> void:
 	if hitbox:
 		hitbox.monitorable = false
@@ -26,6 +28,11 @@ func enter() -> void:
 		player.animation.animation_finished.connect(_on_animation_finished, CONNECT_ONE_SHOT)
 
 func _on_animation_finished() -> void:
+	if hitbox:
+		hitbox.set_deferred("monitorable", false)
+		
+	await get_tree().create_timer(recovery_time).timeout
+	
 	has_attacked = true
 
 func exit(new_state: State = null) -> void:

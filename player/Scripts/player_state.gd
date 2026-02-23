@@ -1,7 +1,7 @@
 class_name PlayerState
 extends State
 
-@onready var player: Player = get_tree().get_first_node_in_group("player")
+@onready var player: Player = $"../.."
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", 980)
 
@@ -49,9 +49,16 @@ func get_move_dir() -> float:
 	return Input.get_axis(left_key, right_key)
 
 func process_physics(delta: float) -> State:
-	if(player.velocity.y > 0): return fall_state
+	# 1. Always apply gravity first
 	player.velocity.y += gravity * delta
+	
+	# 2. Actually move the character! (Crucial so they hit the floor)
 	player.move_and_slide()
+	
+	# 3. Check if we walked off a ledge or are falling down
+	if not player.is_on_floor() and player.velocity.y > 0:
+		return fall_state
+		
 	return null
 	
 func exit(new_state: State = null) -> void:
