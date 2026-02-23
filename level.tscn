@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b51rkdi1a6p1w" path="res://level/Stage Layers/tileset.png" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://dm15ynuwo56gd" path="res://player.tscn" id="2_vonw3"]
-[ext_resource type="PackedScene" uid="uid://h0ui3v12hh80" path="res://punching_bag.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://cysv8sjwtvajb" path="res://agent.tscn" id="4_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://b1aoqtwlwpa8f" path="res://hud.tscn" id="5_f2txt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
@@ -622,9 +622,9 @@ position = Vector2(17.476868, 4.8140335)
 [node name="CollisionShape2D" parent="Player/StateMachine/pain/HurtBox" index="0"]
 position = Vector2(0.47686768, 6.8140335)
 
-[node name="PunchingBag" parent="." instance=ExtResource("3_oi3di")]
-position = Vector2(83, 19)
-
 [node name="HUD" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="agent" parent="." instance=ExtResource("4_0b4ue")]
+position = Vector2(140, 27)
 
 [editable path="Player"]

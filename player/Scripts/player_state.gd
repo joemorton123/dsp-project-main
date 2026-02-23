@@ -41,6 +41,13 @@ func determine_sprite_flipped(event_text: String) -> void:
 	elif right_actions.find(event_text) != -1: sprite_flipped = false
 	player.sprite.flip_h = sprite_flipped
 
+
+func get_move_dir() -> float: 
+	if player.is_agent:
+		return 0.0 
+		
+	return Input.get_axis(left_key, right_key)
+
 func process_physics(delta: float) -> State:
 	if(player.velocity.y > 0): return fall_state
 	player.velocity.y += gravity * delta

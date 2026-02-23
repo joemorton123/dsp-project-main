@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+@export var is_agent: bool = false
+
 @onready var state_machine: StateMachine = $"StateMachine"
 @onready var animation: AnimatedSprite2D = $Sprite
 @onready var sprite: AnimatedSprite2D = $Sprite 
