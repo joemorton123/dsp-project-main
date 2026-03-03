@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://dm15ynuwo56gd"]
+[gd_scene load_steps=85 format=3 uid="uid://dm15ynuwo56gd"]
 
 [ext_resource type="Script" uid="uid://beqqeuh6gwbdt" path="res://player/Scripts/state_machine.gd" id="1_606se"]
 [ext_resource type="Texture2D" uid="uid://8fpema5qjp6x" path="res://player/sprites/Idle/idle1.png" id="1_bwjto"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://cbyapaqsrx11r" path="res://player/Scripts/pain.gd" id="36_b88wv"]
 [ext_resource type="Script" uid="uid://ccxtrp3pme87b" path="res://player/Scripts/hurt_box.gd" id="36_khis8"]
 [ext_resource type="Script" uid="uid://b5rgu2hdoy76h" path="res://player/Scripts/health.gd" id="40_ny14h"]
+[ext_resource type="Script" uid="uid://ck8xharfqsv2q" path="res://agent_brain.gd" id="41_ny14h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hl5qd"]
 atlas = ExtResource("9_jm5j8")
@@ -534,6 +535,7 @@ size = Vector2(24, 47)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(1, -2)
 script = ExtResource("1_op7ga")
+is_agent = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 1.0079365)
@@ -643,3 +645,6 @@ debug_color = Color(0.82124746, 0, 0.047960058, 0.41960785)
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("40_ny14h")
 max_health = 10
+
+[node name="AIController2D" type="Node2D" parent="."]
+script = ExtResource("41_ny14h")

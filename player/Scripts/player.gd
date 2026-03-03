@@ -2,6 +2,10 @@ class_name Player
 extends CharacterBody2D
 
 @export var is_agent: bool = false
+var ai_move_dir: float = 0.0
+var ai_wants_jump: bool = false
+var ai_wants_punch: bool = false
+var ai_wants_kick: bool = false
 @export var player_id: int = 1
 
 @onready var state_machine: StateMachine = $"StateMachine"

@@ -52,11 +52,16 @@ func determine_sprite_flipped(event_text: String) -> void:
 	elif right_actions.find(event_text) != -1: sprite_flipped = false
 	player.sprite.flip_h = sprite_flipped
 
-func get_move_dir() -> float: 
+func get_move_dir() -> float:
+	# Let the AI walk!
 	if player.is_agent:
-		return 0.0 
+		return player.ai_move_dir 
 		
-	return Input.get_axis(left_key, right_key)
+	# Let the human use their assigned multiplayer keys!
+	if left_key and right_key:
+		return Input.get_axis(left_key, right_key)
+		
+	return 0.0
 
 func process_physics(delta: float) -> State:
 	player.velocity.y += gravity * delta

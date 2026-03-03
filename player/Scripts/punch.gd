@@ -17,7 +17,7 @@ func enter() -> void:
 	
 	if hitbox and collision_shape:
 		if sprite_flipped:
-			collision_shape.position.x = -16.25
+			collision_shape.position.x = -18.25
 		else:
 			collision_shape.position.x = 20.25
 		

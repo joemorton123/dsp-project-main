@@ -18,8 +18,22 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	super(delta)
-	if not player.is_agent:
-		if Input.get_axis(left_key, right_key) != 0.0:
-			return walk_state
+	# 1. AI ACTION CHECKS (Wake up from Idle!)
+	if player.is_agent:
+		if player.ai_wants_jump: return jump_state
+		if player.ai_wants_punch: return punch_state
+		if player.ai_wants_kick: return kick_state
+		
+	# 2. MOVEMENT CHECK
+	var direction = get_move_dir()
+	
+	# If the brain wants to move, transition to walk!
+	if direction != 0.0:
+		return walk_state
+
+	# Apply gravity while standing still
+	var new_state = super(delta)
+	if new_state: 
+		return new_state
+		
 	return null

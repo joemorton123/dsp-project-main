@@ -17,10 +17,12 @@ func enter() -> void:
 	has_hit_wall = false
 	
 	var attacker: Node2D
-	if player.is_agent:
-		attacker = get_tree().get_first_node_in_group("player")
-	else:
-		attacker = get_tree().get_first_node_in_group("enemy")
+	
+	var possible_opponents = get_tree().get_nodes_in_group("player") + get_tree().get_nodes_in_group("enemy")
+	for p in possible_opponents:
+		if p != player and p is CharacterBody2D:
+			attacker = p
+			break
 		
 	if attacker:
 		var direction = sign(player.global_position.x - attacker.global_position.x)

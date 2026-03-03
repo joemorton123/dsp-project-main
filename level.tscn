@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://cumgwcdvlxna8"]
+[gd_scene load_steps=8 format=4 uid="uid://cumgwcdvlxna8"]
 
 [ext_resource type="Texture2D" uid="uid://b51rkdi1a6p1w" path="res://level/Stage Layers/tileset.png" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://dm15ynuwo56gd" path="res://player.tscn" id="2_vonw3"]
-[ext_resource type="PackedScene" uid="uid://cysv8sjwtvajb" path="res://agent.tscn" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://b8qvqbywi4nan" path="res://agent.tscn" id="4_0b4ue"]
+[ext_resource type="Script" uid="uid://d3h43mcdmwlll" path="res://addons/godot_rl_agents/sync.gd" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://b1aoqtwlwpa8f" path="res://hud.tscn" id="5_f2txt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
@@ -581,6 +582,7 @@ sources/0 = SubResource("TileSetAtlasSource_vonw3")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_oi3di")
 format = 2
+layer_0/tile_data = PackedInt32Array(-524302, 0, 22, -524301, 0, 22, -524300, 0, 22, -524299, 0, 22, -524298, 0, 22, -524297, 0, 22, -524296, 0, 22, -524295, 0, 22, -524294, 0, 22, -524293, 0, 22, -589829, 0, 22, -589828, 0, 22, -589827, 0, 22, -589826, 0, 22, -589825, 0, 22, -655360, 0, 22, -524289, 0, 22, -524290, 0, 22, -524291, 0, 22, -524292, 0, 22, -589824, 0, 22, -589823, 0, 22, -589822, 0, 22, -589821, 0, 22, -589820, 0, 22, -589819, 0, 22, -589818, 0, 22, -589817, 0, 22, -589816, 0, 22, -589815, 0, 22, -589814, 0, 22, -589813, 0, 22, -589812, 0, 22, -589811, 0, 22, -524275, 0, 22, -458767, 0, 22, -393231, 0, 22, -327695, 0, 22, -262159, 0, 22, -196623, 0, 22, -131087, 0, 22, -65551, 0, 22, -15, 0, 22, 65521, 0, 22, 131057, 0, 22, 196593, 0, 22, 262129, 0, 22, 327665, 0, 22, 393201, 0, 22, 458737, 0, 22, 524273, 0, 22, 589809, 0, 22, 589810, 0, 22, 589811, 0, 22, 589812, 0, 22, 589813, 0, 22, 589814, 0, 22, 589815, 0, 22, 655351, 0, 22, 655352, 0, 22, 655353, 0, 22, 655354, 0, 22, 655355, 0, 22, 655356, 0, 22, 655357, 0, 22, 589821, 0, 22, 589822, 0, 22, 589820, 0, 22, 589819, 0, 22, 589818, 0, 22, 589817, 0, 22, 589816, 0, 22, 589823, 0, 22, 524288, 0, 22, 524289, 0, 22, 524290, 0, 22, 524291, 0, 22, 524292, 0, 22, 524293, 0, 22, 524294, 0, 22, 524295, 0, 22, 524296, 0, 22, 524297, 0, 22, 524298, 0, 22, 524299, 0, 22, 524300, 0, 22, 524301, 0, 22, 524302, 0, 22, 458766, 0, 22, 393230, 0, 22, 327694, 0, 22, 262158, 0, 22, 196622, 0, 22, 131086, 0, 22, 65550, 0, 22, 14, 0, 22, -65522, 0, 22, -131058, 0, 22, -196594, 0, 22, -262130, 0, 22, -327666, 0, 22, -393202, 0, 22, -393203, 0, 22, -458738, 0, 22, -524274, 0, 22, -589810, 0, 22, -655346, 0, 22, -655347, 0, 22, -655348, 0, 22, -655349, 0, 22, -655350, 0, 22, -655351, 0, 22, -655352, 0, 22, -655353, 0, 22, -655354, 0, 22, -655355, 0, 22, -655356, 0, 22, -655357, 0, 22, -655358, 0, 22, -655359, 0, 22, -589830, 0, 22, -589831, 0, 22, -589832, 0, 22, -589833, 0, 22, -589834, 0, 22, -589835, 0, 22, -589836, 0, 22, -589837, 0, 22, -589838, 0, 22, -589839, 0, 22, -524303, 0, 22)
 
 [node name="Foreground" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
@@ -611,7 +613,7 @@ zoom = Vector2(3, 3)
 position = Vector2(-157, 27)
 
 [node name="Collision" parent="Player" index="1"]
-position = Vector2(0.47686768, 8.8140335)
+position = Vector2(1, 7)
 
 [node name="CollisionShape2D" parent="Player/StateMachine/punch/HitBox" index="0"]
 position = Vector2(21.476868, -5.1859665)
@@ -620,13 +622,16 @@ position = Vector2(21.476868, -5.1859665)
 position = Vector2(17.476868, 4.8140335)
 
 [node name="CollisionShape2D" parent="Player/StateMachine/pain/HurtBox" index="0"]
-position = Vector2(0.47686768, 6.8140335)
+position = Vector2(1, 5)
 
 [node name="HUD" parent="." instance=ExtResource("5_f2txt")]
 
 [node name="agent" parent="." instance=ExtResource("4_0b4ue")]
-position = Vector2(140, 27)
-is_agent = false
-player_id = 2
+position = Vector2(140, 23)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("5_1ainy")
+speed_up = 10.0
+metadata/_custom_type_script = "uid://d3h43mcdmwlll"
 
 [editable path="Player"]
