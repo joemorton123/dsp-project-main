@@ -2,6 +2,7 @@ class_name PlayerPunchState
 extends PlayerState
 
 var has_attacked: bool
+<<<<<<< HEAD
 # Guard flag to cancel stale awaits when the state is exited early
 # (e.g. player is hit during punch recovery). Without this, the await
 # in _on_animation_finished completes after we've left this state and
@@ -153,14 +154,61 @@ func exit(new_state: State = null) -> void:
 		player.sprite.frame_changed.disconnect(_on_frame_changed)
 	if attack_hurtbox and attack_hurtbox.received_damage.is_connected(_on_attack_hurt):
 		attack_hurtbox.received_damage.disconnect(_on_attack_hurt)
+=======
+@onready var hitbox: HitBox = $HitBox
+
+@onready var collision_shape: CollisionShape2D = $HitBox/CollisionShape2D
+
+@export var recovery_time: float = 0.2
+
+func _ready() -> void:
+	if hitbox:
+		hitbox.monitorable = false
+
+func enter() -> void:
+	has_attacked = false
+	
+	if hitbox and collision_shape:
+		if sprite_flipped:
+			collision_shape.position.x = -18.25
+		else:
+			collision_shape.position.x = 20.25
+		
+		hitbox.set_deferred("monitorable", true)
+		
+	player.animation.play(punch_anim)
+	
+	if not player.animation.animation_finished.is_connected(_on_animation_finished):
+		player.animation.animation_finished.connect(_on_animation_finished, CONNECT_ONE_SHOT)
+
+func _on_animation_finished() -> void:
+	if hitbox:
+		hitbox.set_deferred("monitorable", false)
+
+	await get_tree().create_timer(recovery_time).timeout
+
+	has_attacked = true
+
+func exit(new_state: State = null) -> void:
+	super(new_state)
+	if hitbox:
+		hitbox.set_deferred("monitorable", false)
+>>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 
 func process_input(event: InputEvent) -> State:
 	super(event)
 	if has_attacked:
+<<<<<<< HEAD
 		if event.is_action_pressed(movement_key):
 			determine_sprite_flipped(event.as_text())
 			return walk_state
 		elif event.is_action_pressed(jump_key):
+=======
+		if event.is_action_pressed(movement_key): 
+			determine_sprite_flipped(event.as_text())
+			return walk_state
+		elif event.is_action_pressed(jump_key): 
+>>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 			return jump_state
 	return null
 

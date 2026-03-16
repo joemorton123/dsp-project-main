@@ -39,21 +39,37 @@ func get_obs() -> Dictionary:
 
 func get_action_space() -> Dictionary:
 	return {
+<<<<<<< HEAD
 		"a_move": { "size": 3, "action_type": "discrete" },
 		"b_attack": { "size": 3, "action_type": "discrete" },
 		"c_jump": { "size": 2, "action_type": "discrete" }
+=======
+		move = { size = 3, action_type = "discrete" },
+		attack = { size = 3, action_type = "discrete" },
+		jump = { size = 2, action_type = "discrete" }
+>>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 	}
 
 func set_action(action) -> void:
 	if not agent.is_agent: return
 	
+<<<<<<< HEAD
+=======
+	# --- SAFE RESET EXECUTION ---
+>>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 	if needs_manual_reset:
 		manual_reset()
 		return 
 	
+<<<<<<< HEAD
 	var move_choice = int(action["a_move"])
 	var attack_choice = int(action["b_attack"])
 	var jump_choice = int(action["c_jump"])
+=======
+	var move_choice = int(action["move"])
+	var attack_choice = int(action["attack"])
+	var jump_choice = int(action["jump"])
+>>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 	
 	if move_choice == 1: agent.ai_move_dir = -1.0
 	elif move_choice == 2: agent.ai_move_dir = 1.0

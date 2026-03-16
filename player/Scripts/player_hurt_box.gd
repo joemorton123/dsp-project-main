@@ -7,6 +7,7 @@ extends HurtBox
 var hitting_area: Node2D
 
 func _on_area_entered(hit_box: HitBox) -> void:
+<<<<<<< HEAD
 	if hit_box == null:
 		return
 
@@ -36,3 +37,10 @@ func _on_area_entered(hit_box: HitBox) -> void:
 		return
 
 	state_machine.change_state(pain_state)
+=======
+	if hit_box == null: return
+	super(hit_box)
+	hitting_area = hit_box
+	state_machine.change_state(pain_state)
+	
+>>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2

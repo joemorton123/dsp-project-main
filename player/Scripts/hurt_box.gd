@@ -6,6 +6,7 @@ signal received_damage(damage: int)
 
 
 @export var health: Health
+<<<<<<< HEAD
 @export var hit_invulnerability_time: float = 0.2
 var last_attack_by_hitbox: Dictionary = {}
 
@@ -44,3 +45,17 @@ func _try_apply_damage(area: Area2D) -> void:
 		health.set_temporary_immortality(hit_invulnerability_time)
 	received_damage.emit(hitbox.get_damage())
 	print("Damage dealt: ", hitbox.get_damage())
+=======
+
+
+func _ready():
+	connect("area_entered", _on_area_entered)
+
+
+func _on_area_entered(hitbox: HitBox) -> void:
+	if hitbox != null and health != null:
+		# Use the setter by using 'self' or just the property name
+		health.health -= hitbox.get_damage() 
+		received_damage.emit(hitbox.get_damage())
+		print("Damage dealt: ", hitbox.get_damage())
+>>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
