@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://h0ui3v12hh80"]
+
+[ext_resource type="Texture2D" uid="uid://jbeh38tfataf" path="res://level/Stage Layers/props/hydrant.png" id="1_wabjf"]
+[ext_resource type="Script" uid="uid://cekn2vt1xchls" path="res://punching_bag.gd" id="1_wbgja"]
+[ext_resource type="Script" uid="uid://b5rgu2hdoy76h" path="res://health.gd" id="2_7rhcp"]
+[ext_resource type="Script" uid="uid://dgkpww42y58s4" path="res://player/Scripts/hit_box.gd" id="3_wbgja"]
+[ext_resource type="Script" uid="uid://ccxtrp3pme87b" path="res://player/Scripts/hurt_box.gd" id="4_ji54r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66smm"]
+size = Vector2(19.243244, 31.456314)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rhcp"]
+size = Vector2(58, 87)
+
+[node name="PunchingBag" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_wbgja")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 1.0000038)
+scale = Vector2(2.9210527, 2.8611112)
+texture = ExtResource("1_wabjf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(0.37837845, -0.34951657)
+shape = SubResource("RectangleShape2D_66smm")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_7rhcp")
+max_health = 10
+metadata/_custom_type_script = "uid://b5rgu2hdoy76h"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_wbgja")
+metadata/_custom_type_script = "uid://dgkpww42y58s4"
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("4_ji54r")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://ccxtrp3pme87b"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_7rhcp")

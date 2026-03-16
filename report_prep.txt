@@ -1,0 +1,52 @@
+Report prep
+
+Design:
+diagrams of design(uml)
+more functional requirements
+
+imp+test:
+non functional requirements
+use appendix for showing larger portions if not 100% needed
+such as show important lines of code in text and then link the rest of 
+the related code in the appendix
+
+Project evaluation:
+objective overview of how the project went
+and a small paragraph of personal reflection on how it went 
+and how it could go better
+
+Further work and conclution:
+future work / how could it be improved
+
+
+Try writing in active third person when writing the report.
+Try to get report written by the 20th for ealry look at marking
+
+
+V1 of the agent overview:
+within the first few minutes of testing, the agent managed to escape the enviroment
+causing this to mostly be a wasted time training.
+
+improved on by fixing skybox, preventing the agent from escaping
+
+V2 of the agent overview:
+agents now can fight each other with the player 1 and player 2 using different styles
+Player 1 always approaching and player 2 always spamming punch.
+Currently, this shows punch needs a hurtbox to allow opposing player to punish or  
+needs more recovery without a hurtbox to allow the other player to punish
+Currently a bug exists where when punched and knocked into a wall at specific distances, 
+the player being punched canbe hit multiple times by that punch, 
+I assume by being knocked off the wall and back into the punch
+causing mutiple instances of damage.
+Another oversight of this version is when at the wall, if the one at the wall is hit by a punch,
+the recovery time of that player is longer than the recovery time of the punch.
+This causes an endless loop where the attacking player can always kill the opponent
+as they cannot retaliate in time with a jump or punch of thier own.
+
+Things to improve on before next testing:
+fix bug at wall causing multiple hits.
+give the punch hitbox a hurtbox to allow punishing.
+either increase punch recovery time or decrease pain recovery time to prevent wall bug.
+
+
+
