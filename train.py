@@ -1,4 +1,4 @@
-﻿import os
+import os
 from stable_baselines3 import PPO
 from godot_rl.wrappers.stable_baselines_wrapper import StableBaselinesGodotEnv
 

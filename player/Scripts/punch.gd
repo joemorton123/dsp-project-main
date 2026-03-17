@@ -1,4 +1,4 @@
-﻿class_name PlayerPunchState
+class_name PlayerPunchState
 extends PlayerState
 
 var has_attacked: bool

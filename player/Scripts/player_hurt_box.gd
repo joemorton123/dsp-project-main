@@ -1,4 +1,4 @@
-﻿class_name PlayerHurtBox
+class_name PlayerHurtBox
 extends HurtBox
 
 @onready var pain_state: PlayerPainState = $".."

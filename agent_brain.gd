@@ -1,4 +1,4 @@
-﻿extends AIController2D
+extends AIController2D
 
 @onready var agent: CharacterBody2D = $".."
 var opponent: CharacterBody2D

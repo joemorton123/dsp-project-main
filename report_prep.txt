@@ -42,6 +42,7 @@ Another oversight of this version is when at the wall, if the one at the wall is
 the recovery time of that player is longer than the recovery time of the punch.
 This causes an endless loop where the attacking player can always kill the opponent
 as they cannot retaliate in time with a jump or punch of thier own.
+Determined that 1 million steps is too many and will be cutting each stage down to 200,000.
 
 Things to improve on before next testing:
 fix bug at wall causing multiple hits.
