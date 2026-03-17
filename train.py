@@ -8,17 +8,16 @@ def train_agent():
     env = StableBaselinesGodotEnv(env_path=None, show_window=True)
     print(" Connected to Godot!")
 
-    # Load the V2 brain so we don't lose our 1 Million steps of progress!
-    print(" Loading the V2 Self-Play Brain to continue training...")
-    model = PPO.load("brawler_self_play_v2", env=env)
+    # Load the V4 brain so we don't lose steps of progress!
+    print(" Loading the V4 Self-Play Brain to continue training...")
+    model = PPO.load("brawler_self_play_v4", env=env)
 
-    print(" Resuming Self-Play! Watch them evolve to Level 3...")
-    # Train for ANOTHER 1 Million steps
-    model.learn(total_timesteps=1000000) 
+    print(" Resuming Self-Play! Watch them evolve to Level 4...")
+    model.learn(total_timesteps=200000) 
 
-    # Save the even smarter brain as V3
-    print(" Training Complete! Saving the new V3 AI model...")
-    model.save("brawler_self_play_v3")
+    # Save the even smarter brain as V5
+    print(" Training Complete! Saving the new V5 AI model...")
+    model.save("brawler_self_play_v5")
     
     env.close()
     print(" All done! You can stop the Godot game now.")

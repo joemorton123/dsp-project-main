@@ -49,5 +49,11 @@ fix bug at wall causing multiple hits.
 give the punch hitbox a hurtbox to allow punishing.
 either increase punch recovery time or decrease pain recovery time to prevent wall bug.
 
-
+V3 of the agent overview:
+After fixing a lot of the bugs in the game such as hitboxes and infinate wall hits,
+the agents seem to play the game more like they are trying to interact with each other
+unlike before where they were just trying to get into positions to abuse the bugs.
+More training could prove usfull however it could also be good to see how the agents 
+would evolve now the bugs are fixed if they started from scratch.
+Will test out both options and figure out which results in the bestoutcome.
 
