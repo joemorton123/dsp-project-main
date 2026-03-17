@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=86 format=3 uid="uid://b8qvqbywi4nan"]
-=======
-[gd_scene load_steps=85 format=3 uid="uid://b8qvqbywi4nan"]
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
+﻿[gd_scene load_steps=86 format=3 uid="uid://b8qvqbywi4nan"]
 
 [ext_resource type="Script" uid="uid://3886libtfqmq" path="res://player/Scripts/player.gd" id="1_0kamt"]
 [ext_resource type="Texture2D" uid="uid://jfyumopoinrq" path="res://player/sprites/Jump/jump4.png" id="2_ffl7p"]
@@ -122,13 +118,10 @@ region = Rect2(15, 0, 65, 63)
 atlas = ExtResource("19_8afgi")
 region = Rect2(15, 0, 65, 63)
 
-<<<<<<< HEAD
 [sub_resource type="AtlasTexture" id="AtlasTexture_pnch4"]
 atlas = ExtResource("19_8afgi")
 region = Rect2(15, 0, 65, 63)
 
-=======
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 [sub_resource type="AtlasTexture" id="AtlasTexture_5tmop"]
 atlas = ExtResource("20_xgue0")
 region = Rect2(15, 0, 65, 63)
@@ -253,12 +246,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oybyf")
-<<<<<<< HEAD
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pnch4")
-=======
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 }],
 "loop": false,
 "name": &"punch",
@@ -473,10 +463,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ajfva"]
 resource_name = "punch"
-<<<<<<< HEAD
 length = 0.8
-=======
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -497,17 +484,10 @@ tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-<<<<<<< HEAD
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-=======
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 }
 
 [sub_resource type="Animation" id="Animation_634y6"]
@@ -552,24 +532,14 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibah8"]
-<<<<<<< HEAD
 size = Vector2(24, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny14h"]
 size = Vector2(24, 47)
-=======
-size = Vector2(34.5, 10)
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_331ug"]
 size = Vector2(28.75, 13.5)
 
-<<<<<<< HEAD
-=======
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny14h"]
-size = Vector2(24, 47)
-
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 [node name="agent" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(1, -2)
 script = ExtResource("1_0kamt")
@@ -595,7 +565,6 @@ libraries = {
 script = ExtResource("30_7o2ku")
 starting_state = NodePath("idle")
 
-<<<<<<< HEAD
 [node name="BodyHurtBox" type="Area2D" parent="StateMachine" node_paths=PackedStringArray("health")]
 collision_layer = 0
 collision_mask = 2
@@ -609,8 +578,6 @@ position = Vector2(-1, 8.5)
 shape = SubResource("RectangleShape2D_ny14h")
 debug_color = Color(0.82124746, 0, 0.047960058, 0.41960785)
 
-=======
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 [node name="idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("walk_state", "jump_state", "fall_state", "punch_state", "kick_state")]
 script = ExtResource("31_5olo5")
 walk_state = NodePath("../walk")
@@ -650,7 +617,6 @@ jump_state = NodePath("../jump")
 collision_layer = 4
 collision_mask = 0
 monitoring = false
-<<<<<<< HEAD
 monitorable = false
 script = ExtResource("36_16heb")
 
@@ -672,15 +638,6 @@ position = Vector2(-1, 8.5)
 shape = SubResource("RectangleShape2D_ny14h")
 debug_color = Color(0.82124746, 0, 0.047960058, 0.41960785)
 
-=======
-script = ExtResource("36_16heb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/punch/HitBox"]
-position = Vector2(20, -3)
-shape = SubResource("RectangleShape2D_ibah8")
-debug_color = Color(0.739062, 0.2214694, 0.99999994, 0.41960785)
-
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 [node name="kick" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state")]
 script = ExtResource("37_3k47t")
 idle_state = NodePath("../idle")
@@ -700,7 +657,6 @@ position = Vector2(18.625, 9)
 shape = SubResource("RectangleShape2D_331ug")
 debug_color = Color(0.40753078, 0.60742974, 1.92523e-07, 0.41960785)
 
-<<<<<<< HEAD
 [node name="AttackHurtBox" type="Area2D" parent="StateMachine/kick" node_paths=PackedStringArray("health")]
 collision_layer = 0
 collision_mask = 2
@@ -713,8 +669,6 @@ position = Vector2(-1, 8.5)
 shape = SubResource("RectangleShape2D_ny14h")
 debug_color = Color(0.3379115, 0.32450432, 0.9254495, 0.41960785)
 
-=======
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 [node name="pain" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "punch_state", "kick_state")]
 script = ExtResource("38_drumo")
 idle_state = NodePath("../idle")
@@ -726,12 +680,8 @@ kick_state = NodePath("../kick")
 
 [node name="HurtBox" type="Area2D" parent="StateMachine/pain" node_paths=PackedStringArray("health")]
 collision_layer = 0
-<<<<<<< HEAD
 collision_mask = 0
 monitoring = false
-=======
-collision_mask = 2
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 monitorable = false
 script = ExtResource("39_sgl6e")
 health = NodePath("../../../Health")

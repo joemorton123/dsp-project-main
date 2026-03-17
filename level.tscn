@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://cumgwcdvlxna8"]
+﻿[gd_scene load_steps=8 format=4 uid="uid://cumgwcdvlxna8"]
 
 [ext_resource type="Texture2D" uid="uid://b51rkdi1a6p1w" path="res://level/Stage Layers/tileset.png" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://dm15ynuwo56gd" path="res://player.tscn" id="2_vonw3"]
@@ -615,15 +615,6 @@ position = Vector2(-157, 27)
 [node name="Collision" parent="Player" index="1"]
 position = Vector2(1, 7)
 
-<<<<<<< HEAD
-=======
-[node name="CollisionShape2D" parent="Player/StateMachine/punch/HitBox" index="0"]
-position = Vector2(21.476868, -5.1859665)
-
-[node name="CollisionShape2D" parent="Player/StateMachine/kick/HitBox" index="0"]
-position = Vector2(17.476868, 4.8140335)
-
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 [node name="CollisionShape2D" parent="Player/StateMachine/pain/HurtBox" index="0"]
 position = Vector2(1, 5)
 
@@ -634,10 +625,6 @@ position = Vector2(140, 23)
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("5_1ainy")
-<<<<<<< HEAD
-=======
-speed_up = 10.0
->>>>>>> dcd3ecb527f85fa55630e7d6f168040239aa5eb2
 metadata/_custom_type_script = "uid://d3h43mcdmwlll"
 
 [editable path="Player"]
