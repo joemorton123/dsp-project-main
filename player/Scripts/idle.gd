@@ -18,7 +18,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	# 1. AI ACTION CHECKS (Wake up from Idle!)
+	# 1. AI ACTION CHECKS (Wake up from Idle)
 	if player.is_agent:
 		if player.ai_wants_jump: return jump_state
 		if player.ai_wants_punch: return punch_state

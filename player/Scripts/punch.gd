@@ -4,7 +4,7 @@ extends PlayerState
 var has_attacked: bool
 # Guard flag to cancel stale awaits when the state is exited early
 # (e.g. player is hit during punch recovery). Without this, the await
-# in _on_animation_finished completes after we've left this state and
+# in _on_animation_finished completes after its left this state and
 # sets has_attacked = true, causing the next punch entry to skip instantly.
 var _is_active: bool = false
 
@@ -122,11 +122,10 @@ func _on_animation_finished() -> void:
 
 	# Hurtbox lingers after the hitbox closes so a whiffed punch can be punished.
 	# The linger is longer than hurtbox_linger_time was previously (0.12 -> 0.25).
-	# attack_hurtbox is already on from enter(); we just wait then turn it off.
+	# attack_hurtbox is already on from enter(); I just wait then turn it off.
 	await get_tree().create_timer(hurtbox_linger_time).timeout
 
-	# If we were interrupted (hit during linger), _is_active is false — bail out
-	# so we don't set has_attacked = true on a state we've already left.
+
 	if not _is_active:
 		return
 

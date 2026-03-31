@@ -7,7 +7,6 @@ var current_reward: float = 0.0
 var previous_enemy_health: float = 10.0
 var previous_distance: float = 1000.0
 
-# --- THE MAGIC SYNC FLAG ---
 var needs_manual_reset: bool = false 
 
 func _ready() -> void:

@@ -27,7 +27,7 @@ func process_physics(delta: float) -> State:
 		if player.ai_wants_punch: return punch_state
 		if player.ai_wants_kick: return kick_state
 
-	# 2. MOVEMENT (Declare 'direction' BEFORE we try to use it for flipping!)
+	# 2. MOVEMENT (Declare 'direction' BEFORE i try to use it for flipping!)
 	var direction = get_move_dir()
 	
 	# 3. AI SPRITE FLIPPING & HITBOX DIRECTION

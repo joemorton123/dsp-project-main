@@ -40,7 +40,7 @@
 [ext_resource type="Script" uid="uid://cbyapaqsrx11r" path="res://player/Scripts/pain.gd" id="38_drumo"]
 [ext_resource type="Script" uid="uid://ccxtrp3pme87b" path="res://player/Scripts/hurt_box.gd" id="39_sgl6e"]
 [ext_resource type="Script" uid="uid://b5rgu2hdoy76h" path="res://player/Scripts/health.gd" id="40_75vil"]
-[ext_resource type="Script" uid="uid://ck8xharfqsv2q" path="res://agent_brain.gd" id="41_ffl7p"]
+[ext_resource type="Script" uid="uid://ck8xharfqsv2q" path="res://player/Scripts/agent_brain.gd" id="41_ffl7p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hl5qd"]
 atlas = ExtResource("2_ffl7p")

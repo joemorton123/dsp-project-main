@@ -13,7 +13,7 @@ func _on_area_entered(hit_box: HitBox) -> void:
 	# Let HurtBox handle health deduction and attack_id dedup first.
 	# If health didn't actually change (immortality or duplicate hit),
 	# received_damage will not emit and we should not change state either.
-	# We detect this by checking whether super() results in a real hit
+	# It detects this by checking whether super() results in a real hit
 	# by listening for the signal emission synchronously via a flag.
 	var damage_was_dealt: bool = false
 	var _check := func(_d: int) -> void: damage_was_dealt = true
